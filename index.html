@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decimal a Binario</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="titulo">
+        <h1>DECIMAL A BINARIO</h1>
+    </div>
+    <div class="container">
+        <div class="container__entrada">
+            <h2 class="titulo_entrada">Número decimal</h2>
+            <input type="text" id="entrada" class="input" placeholder="Ingrese el número">
+        </div>
+        <button id="btn" class="boton">Convertir</button>
+    </div>
+    <script>
+        const entrada = document.getElementById('entrada');
+        const boton = document.getElementById('btn');
+
+        boton.addEventListener('click', () => {
+            if (entrada.value === "") {
+                alert('Ingrese un número');
+                return;
+            }
+            const resultadoBinario = convertirDecimalABinario(parseInt(entrada.value));
+            alert(`El número binario es: ${resultadoBinario}`);
+        });
+
+        const convertirDecimalABinario = (numeroDecimal) => {
+            let resultado = "";
+            while (numeroDecimal > 0) {
+                resultado = (numeroDecimal % 2) + resultado;
+                numeroDecimal = Math.floor(numeroDecimal / 2);
+            }
+            return resultado || "0";
+        };
+    </script>
+</body>
+</html>
